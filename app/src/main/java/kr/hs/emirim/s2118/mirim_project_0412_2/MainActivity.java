@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText edit1, edit2;
     TextView textResult;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             String edit1Str = edit1.getText().toString();
             String edit2Str = edit2.getText().toString();
+            if(edit1Str.equals("") || edit2Str.equals("")){
+                Toast.makeText(getApplicationContext(),
+                        "연산에 필요한 숫자가 입력되지 않았습니다.",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
             int num1 = Integer.parseInt(edit1Str);
             int num2 = Integer.parseInt(edit2Str);
             int result = 0;
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textResult.setText(R.string.text_result);
             textResult.append(""+result);
+
         }
     };
 }
