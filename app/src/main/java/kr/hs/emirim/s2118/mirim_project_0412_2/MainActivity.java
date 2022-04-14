@@ -54,13 +54,24 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_divide:
                     result = num1 / num2;
+                    if(num2 == 0){
+                            Toast.makeText(getApplicationContext(),
+                                    "나누는 수는 0이면 안됩니다.",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                    }
                     break;
                 case R.id.btn_mod:
-                    result = num1 % num2;
+                    if(num2 == 0){
+                        Toast.makeText(getApplicationContext(),
+                                "나누는 수는 0이면 안됩니다.",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     break;
             }
             textResult.setText(R.string.text_result);
-            textResult.append(""+result);
+            textResult.append(""+String.format("%.2f", result));
 
         }
     };
